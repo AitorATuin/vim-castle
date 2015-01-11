@@ -1,0 +1,6 @@
+!home/.vim/bundle/vundle
+!home/.vim/fonts
+!home/.vim/*
+*.swp
+*.~
+*~
