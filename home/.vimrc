@@ -80,6 +80,7 @@ endif
 
 " Powerline setup
 let g:airline_powerline_fonts = 1
+set laststatus=2
 
 " more subtle popup colors 
 if has ('gui_running')
