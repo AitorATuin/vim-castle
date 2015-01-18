@@ -1,5 +1,10 @@
 set nocompatible
 filetype off
+
+let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
+
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 let mapleader=","
@@ -48,6 +53,10 @@ Bundle 'joonty/vim-phpqa'
 Bundle 'xolox/vim-pyref'
 Bundle 'nvie/vim-flake8'
 Bundle 'mbbill/undotree'
+Bundle 'ervandew/supertab'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'nathanaelkane/vim-indent-guides'
 
 " Python stuff
 augroup vimrc_autocmds
@@ -63,6 +72,34 @@ augroup vimrc_autocmds
     autocmd Filetype javascript setlocal ts=8 sts=8 sw=8 noet
     autocmd Filetype php setlocal ts=8 sts=8 sw=8 noet
     augroup END
+
+" Rainbow colors
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+
+" Rainbow parenthesys always
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
 
 :command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
@@ -82,10 +119,17 @@ endif
 let g:airline_powerline_fonts = 1
 set laststatus=2
 
+" Navigate windows
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
 " more subtle popup colors 
 if has ('gui_running')
     highlight Pmenu guibg=#cccccc gui=bold    
     set guioptions-=T  " no toolbar
 endif
+
 
 

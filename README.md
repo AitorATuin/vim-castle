@@ -3,6 +3,6 @@ pip install rope
 pip install ropemode
 pip install ropevim
 
-* TODO
+* TODO:
 
  1. Automate the installation of python deps
