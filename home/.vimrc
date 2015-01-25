@@ -50,13 +50,27 @@ Bundle 'AitorATuin/ropevim'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'xolox/vim-misc'
 Bundle 'joonty/vim-phpqa'
-Bundle 'xolox/vim-pyref'
-Bundle 'nvie/vim-flake8'
 Bundle 'mbbill/undotree'
 Bundle 'ervandew/supertab'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'nvie/vim-pyunit'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'scrooloose/syntastic'
+Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'lambdalisue/nose.vim'
+Bundle 'reinh/vim-makegreen'
+Bundle 'mantiz/vim-plugin-dirsettings'
+
+Bundle 'nvie/vim-flake8'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'xolox/vim-pyref'
+
 
 " Python stuff
 augroup vimrc_autocmds
@@ -66,6 +80,7 @@ augroup vimrc_autocmds
     autocmd FileType python match Excess /\%120v.*/
     autocmd FileType python set nowrap
     autocmd FileType python source $HOME/.vim/bundle/ropevim/plugin/ropevim.vim
+    autocmd FileType python UltiSnipsAddFiletypes python 
     autocmd BufWritePost *.py call Flake8()
     autocmd Filetype html setlocal ts=2 sts=2 sw=2
     autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
@@ -124,6 +139,23 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+" EasyMotion
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+" two characters search
+nmap s <Plug>(easymotion-s2)
+nmap t <Plug>(easymotion-t2)
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
+" LocalVim
+command! LocalVim call dirsettings#Install()
+
+" UtilSnip
+let g:UltiSnipsExpandTrigger="<A-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<A-tab>"
 
 " more subtle popup colors 
 if has ('gui_running')
