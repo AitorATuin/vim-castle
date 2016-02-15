@@ -65,12 +65,13 @@ Bundle 'tomtom/tcomment_vim'
 Bundle 'lambdalisue/nose.vim'
 Bundle 'reinh/vim-makegreen'
 Bundle 'mantiz/vim-plugin-dirsettings'
-
+Bundle 'vimwiki/vimwiki'
 Bundle 'nvie/vim-flake8'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'xolox/vim-pyref'
-
+Bundle 'xolox/vim-lua-inspect'
+Bundle 'lambdatoast/elm.vim'
 
 " Python stuff
 augroup vimrc_autocmds
@@ -81,11 +82,12 @@ augroup vimrc_autocmds
     autocmd FileType python set nowrap
     autocmd FileType python source $HOME/.vim/bundle/ropevim/plugin/ropevim.vim
     autocmd FileType python UltiSnipsAddFiletypes python 
-    autocmd BufWritePost *.py call Flake8()
+    "    autocmd BufWritePost *.py call Flake8()
     autocmd Filetype html setlocal ts=2 sts=2 sw=2
     autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
     autocmd Filetype javascript setlocal ts=8 sts=8 sw=8 noet
     autocmd Filetype php setlocal ts=8 sts=8 sw=8 noet
+    autocmd Filetype sh UltiSnipsAddFiletypes sh
     augroup END
 
 " Rainbow colors
@@ -126,19 +128,13 @@ if has("unix")
         " Do Mac stuff here
         set guifont=Anonymous\ Pro\ for\ Powerline:h14
     else
-        set guifont=Inconsolata\ 9
+        set guifont=Inconsolata\ 11
     endif
 endif
 
 " Powerline setup
 let g:airline_powerline_fonts = 1
 set laststatus=2
-
-" Navigate windows
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
 
 " EasyMotion
 map  / <Plug>(easymotion-sn)
@@ -156,12 +152,44 @@ command! LocalVim call dirsettings#Install()
 let g:UltiSnipsExpandTrigger="<A-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<A-tab>"
+let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "mySnippets"]
+
+" Move between windows
+nmap <silent> <M-Up> :wincmd k<CR>
+nmap <silent> <M-Down> :wincmd j<CR>
+nmap <silent> <M-Left> :wincmd h<CR>
+nmap <silent> <M-Right> :wincmd l<CR>
+
+" Move between tabs
+nmap <silent> <C-Left> :tabNext<CR>
+nmap <silent> <C-Right> :tabnext<CR>
+
+" Move between location list
+nmap <silent> <C-Up> :lNext<CR>
+nmap <silent> <C-Down> :lnext<CR>
 
 " more subtle popup colors 
 if has ('gui_running')
     highlight Pmenu guibg=#cccccc gui=bold    
     set guioptions-=T  " no toolbar
-endif
+    " Navigate windows
+    nmap <silent> <A-Up> :wincmd k<CR>
+    nmap <silent> <A-Down> :wincmd j<CR>
+    nmap <silent> <A-Left> :wincmd h<CR>
+    nmap <silent> <A-Right> :wincmd l<CR>
+end
 
+" Syntastic settings
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_checkers = ['flake8', 'mypy', 'pylint', 'pep8', 'py3kwarn', 'pyflakes', 'python']
+let g:syntastic_python_flake8_args='--ignore=E501 --max-line-length=160'
+let g:syntastic_sh_checkers = ['bashate', 'sh']
