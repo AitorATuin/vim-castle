@@ -1,12 +1,50 @@
 set nocompatible
 filetype off
 
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'gertjanreynaert/cobalt2-vim-theme'
+Plugin 'gmarik/vundle'
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+"Plugin 'klen/python-mode'
+"Plugin 'python-rope/ropevim'
+Plugin 'AitorATuin/ropevim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'xolox/vim-misc'
+Plugin 'joonty/vim-phpqa'
+Plugin 'mbbill/undotree'
+Plugin 'ervandew/supertab'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'nvie/vim-pyunit'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'lambdalisue/nose.vim'
+Plugin 'reinh/vim-makegreen'
+Plugin 'mantiz/vim-plugin-dirsettings'
+Plugin 'vimwiki/vimwiki'
+Plugin 'nvie/vim-flake8'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'xolox/vim-pyref'
+Plugin 'xolox/vim-lua-inspect'
+Plugin 'lambdatoast/elm.vim'
+Plugin 'Shougo/unite.vim'
+call vundle#end()
+
 let g:solarized_termcolors=256
 colorscheme solarized
 set background=dark
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
 let mapleader=","
 
 filetype plugin indent on
@@ -38,40 +76,6 @@ augroup myvimrc
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
-Bundle 'gertjanreynaert/cobalt2-vim-theme'
-Bundle 'gmarik/vundle'
-"Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-"Bundle 'klen/python-mode'
-"Bundle 'python-rope/ropevim'
-Bundle 'AitorATuin/ropevim'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'xolox/vim-misc'
-Bundle 'joonty/vim-phpqa'
-Bundle 'mbbill/undotree'
-Bundle 'ervandew/supertab'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'nvie/vim-pyunit'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'scrooloose/syntastic'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'lambdalisue/nose.vim'
-Bundle 'reinh/vim-makegreen'
-Bundle 'mantiz/vim-plugin-dirsettings'
-Bundle 'vimwiki/vimwiki'
-Bundle 'nvie/vim-flake8'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'xolox/vim-pyref'
-Bundle 'xolox/vim-lua-inspect'
-Bundle 'lambdatoast/elm.vim'
 
 " Python stuff
 augroup vimrc_autocmds
