@@ -39,10 +39,14 @@ Plugin 'xolox/vim-pyref'
 Plugin 'xolox/vim-lua-inspect'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim' 
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 call vundle#end()
 
 let g:solarized_termcolors=256
-colorscheme solarized
+colorscheme dracula
 set background=dark
 
 let mapleader=","
@@ -172,6 +176,9 @@ nmap <silent> <C-Right> :tabnext<CR>
 " Move between location list
 nmap <silent> <C-Up> :lNext<CR>
 nmap <silent> <C-Down> :lnext<CR>
+
+" NERDTree
+nmap <silent> <Leader><Esc> :NERDTreeToggle<CR> 
 
 " more subtle popup colors 
 if has ('gui_running')
