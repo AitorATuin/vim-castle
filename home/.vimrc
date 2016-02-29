@@ -6,12 +6,9 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'gertjanreynaert/cobalt2-vim-theme'
 Plugin 'gmarik/vundle'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'klen/python-mode'
-"Plugin 'python-rope/ropevim'
 Plugin 'AitorATuin/ropevim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'xolox/vim-misc'
@@ -32,7 +29,6 @@ Plugin 'lambdalisue/nose.vim'
 Plugin 'reinh/vim-makegreen'
 Plugin 'mantiz/vim-plugin-dirsettings'
 Plugin 'vimwiki/vimwiki'
-Plugin 'nvie/vim-flake8'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'xolox/vim-pyref'
@@ -42,6 +38,8 @@ Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'leafgarland/typescript-vim' 
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 call vundle#end()
 
@@ -204,3 +202,6 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_python_checkers = ['flake8', 'mypy', 'pylint', 'pep8', 'py3kwarn', 'pyflakes', 'python']
 let g:syntastic_python_flake8_args='--ignore=E501 --max-line-length=160'
 let g:syntastic_sh_checkers = ['bashate', 'sh']
+
+" FZF settings
+let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
