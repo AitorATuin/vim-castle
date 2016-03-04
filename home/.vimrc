@@ -19,13 +19,11 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'nvie/vim-pyunit'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'lambdalisue/nose.vim'
 Plugin 'reinh/vim-makegreen'
 Plugin 'mantiz/vim-plugin-dirsettings'
 Plugin 'vimwiki/vimwiki'
@@ -88,7 +86,6 @@ augroup vimrc_autocmds
     autocmd FileType python set nowrap
     autocmd FileType python source $HOME/.vim/bundle/ropevim/plugin/ropevim.vim
     autocmd FileType python UltiSnipsAddFiletypes python 
-    "    autocmd BufWritePost *.py call Flake8()
     autocmd Filetype html setlocal ts=2 sts=2 sw=2
     autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
     autocmd Filetype javascript setlocal ts=8 sts=8 sw=8 noet
@@ -196,12 +193,13 @@ end
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_python_checkers = ['flake8', 'mypy', 'pylint', 'pep8', 'py3kwarn', 'pyflakes', 'python']
 let g:syntastic_python_flake8_args='--ignore=E501 --max-line-length=160'
 let g:syntastic_sh_checkers = ['bashate', 'sh']
+let g:syntastic_debug = 0
 
 " FZF settings
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
