@@ -41,9 +41,10 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 call vundle#end()
 
-let g:solarized_termcolors=256
-colorscheme dracula
+set t_Co=256
+colorscheme vividchalk
 set background=dark
+
 
 let mapleader=","
 
@@ -185,3 +186,4 @@ let g:syntastic_debug = 0
 
 " FZF settings
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
+
