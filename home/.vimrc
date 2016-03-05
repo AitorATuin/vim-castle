@@ -173,7 +173,10 @@ nmap <silent> <C-Up> :lNext<CR>
 nmap <silent> <C-Down> :lnext<CR>
 
 " NERDTree
-nmap <silent> <Leader><Esc> :NERDTreeToggle<CR> 
+nmap <silent> <Leader>1 :NERDTreeToggle<CR> 
+
+" TagBar
+nmap <silent> <Leader>2 :TagbarToggle<CR>
 
 " more subtle popup colors 
 if has ('gui_running')
