@@ -1,3 +1,9 @@
 [submodule "home/.vim/fonts"]
 	path = home/.vim/fonts
 	url = https://github.com/powerline/fonts.git
+[submodule "home/.vim/_colors/vividchalk"]
+	path = home/.vim/_colors/vividchalk
+	url = https://github.com/tpope/vim-vividchalk.git
+[submodule "home/.vim/_colors/monokai"]
+	path = home/.vim/_colors/monokai
+	url = https://github.com/sickill/vim-monokai.git
