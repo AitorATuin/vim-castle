@@ -30,6 +30,8 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'xolox/vim-pyref'
+" Lua plugins
+Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'xolox/vim-lua-inspect'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'Shougo/unite.vim'
@@ -172,6 +174,10 @@ if has ('gui_running')
     nmap <silent> <A-Left> :wincmd h<CR>
     nmap <silent> <A-Right> :wincmd l<CR>
 end
+
+" Add numbers
+set number
+set relativenumber
 
 " Syntastic settings
 "set statusline+=%#warningmsg#
