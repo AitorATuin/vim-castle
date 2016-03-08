@@ -123,6 +123,9 @@ endif
 
 " Powerline setup
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemode = ":t"
+set hidden
 set laststatus=2
 
 " EasyMotion
