@@ -7,3 +7,6 @@
 [submodule "home/.vim/_colors/monokai"]
 	path = home/.vim/_colors/monokai
 	url = https://github.com/sickill/vim-monokai.git
+[submodule "vim-plug"]
+	path = vim-plug
+	url = https://github.com/junegunn/vim-plug.git

@@ -1,47 +1,97 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'gertjanreynaert/cobalt2-vim-theme'
-Plugin 'gmarik/vundle'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'AitorATuin/ropevim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'xolox/vim-misc'
-Plugin 'joonty/vim-phpqa'
-Plugin 'mbbill/undotree'
-Plugin 'ervandew/supertab'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'reinh/vim-makegreen'
-Plugin 'mantiz/vim-plugin-dirsettings'
-Plugin 'vimwiki/vimwiki'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'xolox/vim-pyref'
-" Lua plugins
-Plugin 'xolox/vim-lua-ftplugin'
-Plugin 'xolox/vim-lua-inspect'
-Plugin 'lambdatoast/elm.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'leafgarland/typescript-vim' 
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-call vundle#end()
+let g:theme_plugins = {
+    \ 'bling/vim-airline' : {},
+    \ 'vim-airline/vim-airline-themes': {}}
+
+let g:lua_plugins = {
+    \ 'xolox/vim-lua-ftplugin' : {'for': 'lua'},
+    \ 'xolox/vim-lua-inspect' : {'for': 'lua'}}
+
+let g:python_plugins = {
+    \ 'xolox/vim-pyref' : {'for': 'python'},
+    \ 'AitorATuin/ropevim' : {'for': 'python'},
+    \ 'davidhalter/jedi-vim' : {'for': 'python'}}
+
+let g:typescript_plugins = {
+    \ 'Quramy/tsuquyomi' : {'for': 'typescript'},
+    \ 'leafgarland/typescript-vim' : {'for': 'typescript'}}
+
+let g:php_plugins = {
+    \ 'joonty/vim-phpqa' : {'for': 'php'}}
+
+let g:coding_plugins = {
+    \ 'Shougo/deoplete.nvim': {'editor': 'nvim'},
+    \ 'scrooloose/syntastic' : {},
+    \ 'SirVer/ultisnips' : {},
+    \ 'honza/vim-snippets' : {},
+    \ 'kien/rainbow_parentheses.vim' : {},
+    \ 'tpope/vim-surround' : {},
+    \ 'nathanaelkane/vim-indent-guides' : {},
+    \ 'majutsushi/tagbar' : {},
+    \ 'tomtom/tcomment_vim' : {}}
+
+let g:elm_plugins = {
+    \ 'lambdatoast/elm.vim' : {'for': 'elm'}}
+
+let g:editor_plugins = {
+    \ 'Lokaltog/vim-easymotion' : {},
+    \ 'junegunn/fzf' : { 'dir': '~/.fzf', 'do': './install --all' },
+    \ 'junegunn/fzf.vim' : {},
+    \ 'vimwiki/vimwiki' : {},
+    \ 'tpope/vim-fugitive' : {}}
+
+let g:misc_plugins = {
+    \ 'scrooloose/nerdtree' : {'on': 'NERDTreeToggle'},
+    \ 'xolox/vim-misc' : {},
+    \ 'mbbill/undotree' : {},
+    \ 'tpope/vim-unimpaired' : {},
+    \ 'mantiz/vim-plugin-dirsettings' : {},
+    \ 'Shougo/vimproc.vim' : {'editor': 'vim'}}
+
+let g:all_plugins = [
+    \ g:theme_plugins,
+    \ g:lua_plugins,
+    \ g:python_plugins,
+    \ g:typescript_plugins,
+    \ g:php_plugins,
+    \ g:coding_plugins,
+    \ g:elm_plugins,
+    \ g:editor_plugins,
+    \ g:misc_plugins]
+
+function! _load_plugins(editor)
+    let plugins = {}
+    for p in g:all_plugins
+        let plugins = extend(plugins, p) 
+    endfor
+    for plugin in keys(plugins)
+        let props =  plugins[plugin]
+        if has_key(props, 'editor')
+            let editor = props['editor']
+            unlet props['editor']
+        else
+            let editor = a:editor
+        endif
+        if editor == a:editor
+            if empty(props)
+               Plug plugin
+            else
+               Plug plugin, props
+            end
+        endif
+    endfor
+endfunction
+
+" Load plugins
+call plug#begin('~/.vim/plugged')
+if !has('nvim')
+    call _load_plugins('vim')
+else
+    call _load_plugins('nvim')
+endif
+call plug#end()
 
 set t_Co=256
 colorscheme vividchalk
