@@ -12,7 +12,8 @@ let g:lua_plugins = {
 let g:python_plugins = {
     \ 'xolox/vim-pyref' : {'for': 'python'},
     \ 'AitorATuin/ropevim' : {'for': 'python'},
-    \ 'davidhalter/jedi-vim' : {'for': 'python'}}
+    \ 'davidhalter/jedi-vim' : {'for': 'python', 'editor': 'vim'},
+    \ 'zchee/deoplete-jedi': {'for': 'python', 'editor': 'nvim'}}
 
 let g:typescript_plugins = {
     \ 'Quramy/tsuquyomi' : {'for': 'typescript'},
@@ -34,6 +35,10 @@ let g:coding_plugins = {
 
 let g:elm_plugins = {
     \ 'lambdatoast/elm.vim' : {'for': 'elm'}}
+
+
+let g:c_plugins = {
+    \ 'zchee/deoplete-clang' : {'editor': 'nvim', 'for': 'c'}}
 
 let g:editor_plugins = {
     \ 'Lokaltog/vim-easymotion' : {},
@@ -59,7 +64,8 @@ let g:all_plugins = [
     \ g:coding_plugins,
     \ g:elm_plugins,
     \ g:editor_plugins,
-    \ g:misc_plugins]
+    \ g:misc_plugins,
+    \ g:c_plugins]
 
 function! _load_plugins(editor)
     let plugins = {}
@@ -202,6 +208,10 @@ nmap <silent> <M-Up> :wincmd k<CR>
 nmap <silent> <M-Down> :wincmd j<CR>
 nmap <silent> <M-Left> :wincmd h<CR>
 nmap <silent> <M-Right> :wincmd l<CR>
+nmap <silent> <M-k> :wincmd k<CR>
+nmap <silent> <M-j> :wincmd j<CR>
+nmap <silent> <M-h> :wincmd h<CR>
+nmap <silent> <M-l> :wincmd l<CR>
 
 " Move between tabs
 nmap <silent> <C-Left> :tabNext<CR>
@@ -226,6 +236,11 @@ if has ('gui_running')
     nmap <silent> <A-Down> :wincmd j<CR>
     nmap <silent> <A-Left> :wincmd h<CR>
     nmap <silent> <A-Right> :wincmd l<CR>
+    nmap <silent> <A-k> :wincmd k<CR>
+    nmap <silent> <A-j> :wincmd j<CR>
+    nmap <silent> <A-h> :wincmd h<CR>
+    nmap <silent> <A-l> :wincmd l<CR>
+
 end
 
 " Add numbers
@@ -246,3 +261,13 @@ let g:syntastic_debug = 0
 " FZF settings
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
 
+" clang TODO: Move to file plugin
+let g:deoplete#sources#clang#libclang_path = '/usr/lib64/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+let g:deoplete#sources#clang#std#c = 'c11'
+let g:deoplete#sources#clang#std#cpp = 'c++1z'
+let g:deoplete#sources#clang#sort_algo = 'priority'
+
+" debug
+let g:deoplete#enable_debug = 1
+let g:deoplete#sources#clang#debug#log_file = '~/.log/nvim/python/deoplete-clang.log'
