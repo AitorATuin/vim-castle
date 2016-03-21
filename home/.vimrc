@@ -36,16 +36,19 @@ let g:coding_plugins = {
 let g:elm_plugins = {
     \ 'lambdatoast/elm.vim' : {'for': 'elm'}}
 
-
 let g:c_plugins = {
     \ 'zchee/deoplete-clang' : {'editor': 'nvim', 'for': 'c'}}
+
+let g:go_plugins = {
+    \ 'fatih/vim-go' : {'editor': 'nvim', 'for': 'go'}}
 
 let g:editor_plugins = {
     \ 'Lokaltog/vim-easymotion' : {},
     \ 'junegunn/fzf' : { 'dir': '~/.fzf', 'do': './install --all' },
     \ 'junegunn/fzf.vim' : {},
     \ 'vimwiki/vimwiki' : {},
-    \ 'tpope/vim-fugitive' : {}}
+    \ 'tpope/vim-fugitive' : {},
+    \ 'junegunn/vim-easy-align' : {}}
 
 let g:misc_plugins = {
     \ 'scrooloose/nerdtree' : {'on': 'NERDTreeToggle'},
@@ -65,6 +68,7 @@ let g:all_plugins = [
     \ g:elm_plugins,
     \ g:editor_plugins,
     \ g:misc_plugins,
+    \ g:go_plugins,
     \ g:c_plugins]
 
 function! _load_plugins(editor)
@@ -184,6 +188,19 @@ let g:airline#extensions#tabline#fnamemode = ":t"
 set hidden
 set laststatus=2
 
+" Copy and paste
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 " EasyMotion
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
@@ -197,21 +214,25 @@ hi link EasyMotionShade  Comment
 command! LocalVim call dirsettings#Install()
 
 " UtilSnip
-let g:UltiSnipsExpandTrigger="<A-tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<A-tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+" TODO: create a small window to show snippets in current scope
+" UltiSnips#SnippetsInCurrentScope
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "mySnippets"]
+
 
 " Move between windows
 nmap <silent> <M-Up> :wincmd k<CR>
 nmap <silent> <M-Down> :wincmd j<CR>
 nmap <silent> <M-Left> :wincmd h<CR>
 nmap <silent> <M-Right> :wincmd l<CR>
-nmap <silent> <M-k> :wincmd k<CR>
-nmap <silent> <M-j> :wincmd j<CR>
-nmap <silent> <M-h> :wincmd h<CR>
-nmap <silent> <M-l> :wincmd l<CR>
+nmap <silent> <A-k> :wincmd k<CR>
+nmap <silent> <A-j> :wincmd j<CR>
+nmap <silent> <A-h> :wincmd h<CR>
+nmap <silent> <A-l> :wincmd l<CR>
 
 " Move between tabs
 nmap <silent> <C-Left> :tabNext<CR>
@@ -271,3 +292,12 @@ let g:deoplete#sources#clang#sort_algo = 'priority'
 " debug
 let g:deoplete#enable_debug = 1
 let g:deoplete#sources#clang#debug#log_file = '~/.log/nvim/python/deoplete-clang.log'
+
+" EasyAlign
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+nmap gb :bn<CR>
+nmap gB :bN<CR>
