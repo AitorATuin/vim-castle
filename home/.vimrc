@@ -9,6 +9,10 @@ let g:lua_plugins = {
     \ 'xolox/vim-lua-ftplugin' : {'for': 'lua'},
     \ 'xolox/vim-lua-inspect' : {'for': 'lua'}}
 
+let g:scala_plugins = {
+    \ 'derekwyatt/vim-scala' : {},
+    \ 'ensime/ensime-vim' : {}}
+
 let g:python_plugins = {
     \ 'xolox/vim-pyref' : {'for': 'python'},
     \ 'AitorATuin/ropevim' : {'for': 'python'},
@@ -58,12 +62,16 @@ let g:misc_plugins = {
     \ 'mantiz/vim-plugin-dirsettings' : {},
     \ 'Shougo/vimproc.vim' : {'editor': 'vim'}}
 
+let g:unmanaged_plugins = {
+    \ '~/.vim/plugged/nvim-example-python-plugin': {}}
+
 let g:all_plugins = [
     \ g:theme_plugins,
     \ g:lua_plugins,
     \ g:python_plugins,
     \ g:typescript_plugins,
     \ g:php_plugins,
+    \ g:scala_plugins,
     \ g:coding_plugins,
     \ g:elm_plugins,
     \ g:editor_plugins,
@@ -272,12 +280,17 @@ set relativenumber
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_debug = 0
+let g:syntastic_enable_signs = 1
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_style_error_symbol = "✗"
+let g:syntastic_style_warning_symbol = "⚠"
+let g:syntastic_auto_loc_list = 0
 
 " FZF settings
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
