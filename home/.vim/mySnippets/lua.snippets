@@ -1,0 +1,36 @@
+priority 0
+
+###########################
+# Custom snippets for lua #
+###########################
+
+snippet @module "Module definition" b
+------------
+-- ${1:module_name}
+-- ${2:description}
+-- module:  $1
+-- author:  `!v get(g:, 'lua_author', $USER)`
+-- license: `!v get(g:, 'lua_license', 'MIT')`
+endsnippet
+
+global !p
+def varDeps(args):
+    result = ""
+    argList = args.split(",")
+
+    for arg in argList:
+        dep = "-- " + arg.strip() + "\n"
+        result = result + dep
+
+    return result.rstrip()
+endglobal
+
+snippet !fun(ction)?! "New function" br
+--- ${3:description}
+`!p snip.rv = varDeps(t[2])`
+function ${1:new_function}(${2})
+  $0
+end
+endsnippet
+
+

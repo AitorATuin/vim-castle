@@ -311,6 +311,10 @@ let g:deoplete#sources#clang#debug#log_file = '~/.log/nvim/python/deoplete-clang
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+" Custom alignment rules
+" l inline lua comments
+let g:easy_align_delimiters = {
+\ 'l': { 'pattern': '--', 'ignore_groups': [] }}
 
 nmap gb :bn<CR>
 nmap gB :bN<CR>
