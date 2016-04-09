@@ -224,8 +224,8 @@ command! LocalVim call dirsettings#Install()
 " UtilSnip
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 " TODO: create a small window to show snippets in current scope
 " UltiSnips#SnippetsInCurrentScope
