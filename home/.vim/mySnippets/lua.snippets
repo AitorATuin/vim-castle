@@ -14,25 +14,41 @@ snippet @module "Module definition" b
 endsnippet
 
 global !p
+import re
+def split_args_types(args):
+    """Splits a list of arguments in name and type"""
+    def trim_types(arg):
+        return arg.replace(' ','')
+    # This pattern will fail in the last element if it contains a type
+    # with ',' like: 'arg5: {A=string, B=int}' so we add a fake argument
+    # to the input that we remove later.
+    r = re.compile(r',(?![^,}:]+},)')
+    args += ", fake_arg"
+    args_xs = re.split(r, args)
+    args_xs.pop()
+
+    return [list(map(lambda x: trim_types(x), x)) for x in [a.split(':') for a in args_xs]]
+
 def var_deps(args):
     result = ""
-    argList = args.split(",")
+    args_xs = split_args_types(args)
 
-    for arg in argList:
-        dep = "-- " + arg.strip() + "\n"
+    for arg in args_xs:
+        list(arg)
+        if len(arg) >= 2:
+            dep = "-- {}: {}\n".format(arg[1], arg[0])
+        else:
+            dep = "-- {}\n".format(arg[0])
+
         result = result + dep
 
     return result.rstrip()
 
 def remove_types(fun_name, fun_args, buffer):
-	#args = fun_args.current_text.split(',')
-	#args_with_types = [a.split(':') for a in args]
-	#names = [xs[0].strip() for i, xs in enumerate(args_with_types)]
-	#arg_types = [xs[1].strip() for i, xs in enumerate(args_with_types)]
-	buffer[n+1] = 'function {}({})'.format(fun_name.current_text, "DDDD")
-	# args_list = tabstop.current_text.split(",")
-	# vim.command('call cursor(%d, %d)' % (tabstop.start.line + 1, tabstop.start.col))
-	# snip.expand_anon('(%s)$2' % tabstop.current_text)
+    args = split_args_types(fun_args)
+    n = len(args) + 1
+    arg_names = ", ".join([a[0] for a in args])
+    buffer[n] = 'function {}({})'.format(fun_name.current_text, arg_names)
 endglobal
 
 post_jump "if snip.tabstop == 3: remove_types(snip.tabstops[1], snip.tabstops[2], snip.buffer)"
