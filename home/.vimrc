@@ -10,7 +10,6 @@ let g:lua_plugins = {
     \ 'xolox/vim-lua-inspect' : {'for': 'lua'}}
 
 let g:scala_plugins = {
-    \ 'derekwyatt/vim-scala' : {},
     \ 'ensime/ensime-vim' : {}}
 
 let g:python_plugins = {
