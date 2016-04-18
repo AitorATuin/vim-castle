@@ -45,13 +45,13 @@ def var_deps(args):
     return result.rstrip()
 
 def remove_types(fun_name, fun_args, buffer):
-    args = split_args_types(fun_args)
+    args = split_args_types(fun_args.current_text)
     n = len(args) + 1
     arg_names = ", ".join([a[0] for a in args])
-    buffer[n] = 'function {}({})'.format(fun_name.current_text, arg_names)
+    buffer[fun_args.start.line] = 'function {}({})'.format(fun_name.current_text, arg_names)
 endglobal
 
-post_jump "if snip.tabstop == 3: remove_types(snip.tabstops[1], snip.tabstops[2], snip.buffer)"
+post_jump "if snip.tabstop == 0: remove_types(snip.tabstops[1], snip.tabstops[2], snip.buffer)"
 snippet !fun(ction)?! "New function" br
 --- ${3:description}
 `!p snip.rv = var_deps(t[2])`

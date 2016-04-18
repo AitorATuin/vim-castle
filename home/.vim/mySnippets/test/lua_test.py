@@ -3,8 +3,13 @@ import unittest
 
 
 class TabstopMocked():
-    def __init__(self, current_text):
+    class SnippetPos():
+        def __init__(self, start_line):
+            self.line = start_line
+
+    def __init__(self, current_text, start_line=10):
         self.current_text = current_text
+        self.start = self.SnippetPos(start_line)
 
 
 class LuaTest(SnippetTest):
@@ -53,27 +58,27 @@ class LuaTest(SnippetTest):
 
         f = self.__dict__['remove_types']
         b1 = [None] * 10
-        f(self.tabstop, self.input1, b1)
+        f(self.tabstop, TabstopMocked(self.input1, 6), b1)
         self.assertEqual(b1[6], self.gen_output(self.args1))
 
         b1 = [None] * 10
-        f(self.tabstop, self.input2, b1)
+        f(self.tabstop, TabstopMocked(self.input2, 7), b1)
         self.assertEqual(b1[7], self.gen_output(self.args2))
 
         b1 = [None] * 10
-        f(self.tabstop, self.input3, b1)
+        f(self.tabstop, TabstopMocked(self.input3, 6), b1)
         self.assertEqual(b1[6], self.gen_output(self.args1))
 
         b1 = [None] * 10
-        f(self.tabstop, self.input4, b1)
+        f(self.tabstop, TabstopMocked(self.input4, 6), b1)
         self.assertEqual(b1[6], self.gen_output(self.args1))
 
         b1 = [None] * 10
-        f(self.tabstop, self.input5, b1)
+        f(self.tabstop, TabstopMocked(self.input5, 6), b1)
         self.assertEqual(b1[6], self.gen_output(self.args1))
 
         b1 = [None] * 10
-        f(self.tabstop, self.input6, b1)
+        f(self.tabstop, TabstopMocked(self.input6, 6), b1)
         self.assertEqual(b1[6], self.gen_output(self.args1))
 
 if __name__ == "__main__":

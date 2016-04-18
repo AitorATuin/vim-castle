@@ -5,3 +5,6 @@ home/.vim/bundle/*
 *.swp
 *.~
 *~
+*.pyc
+*.ropeproject
+*.netrwhist
