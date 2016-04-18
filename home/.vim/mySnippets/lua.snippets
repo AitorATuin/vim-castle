@@ -55,16 +55,16 @@ endglobal
 # Example arguments:
 # arg1: type, arg2: type, ...
 # Typical arguments are like this (they are not validated tough):
-#   number,           a number
-#   bool,             a boolean
-#   string,           an integer
-#   MyType,           a custom type
-#   {type1,           type2} ,  a tuple containing type1 and type2
-#   {type1,           ...} , an array of type1
-#   {[string]=MyType, ...} , a map of MyType objects with string keys
-#   Array(MyType),    Array as a container
-#   ?,                An optional type, example `?nil|bool` which can be simplified as `?bool`
-#   |,                An union type, expample `
+#   number,                 a number
+#   bool,                   a boolean
+#   string,                 an integer
+#   MyType,                 a custom type
+#   {type1,type2},          a tuple containing type1 and type2
+#   {type1,...},            an array of type1
+#   {[string]=MyType,...},  a map of MyType objects with string keys
+#   Array(MyType),          array as a container
+#   ?,                      an optional type, example `?nil|bool` which can be simplified as `?bool`
+#   |,                      an union type, expample `
 post_jump "if snip.tabstop == 0: remove_types(snip.tabstops[1], snip.tabstops[2], snip.buffer)"
 snippet !fun(ction)?! "New function" br
 --- ${3:description}
@@ -73,4 +73,16 @@ function ${1:new_function}(${2})
   $0
   return nil
 end
+endsnippet
+
+snippet describe "Add busted describe unit test section" b
+describe("${1:description}", function ()
+  $0
+end)
+endsnippet
+
+snippet it "Add busted it unit test" b
+it("${1:description}", function ()
+  $0
+end)
 endsnippet
