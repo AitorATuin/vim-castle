@@ -43,6 +43,7 @@ let g:c_plugins = {
     \ 'zchee/deoplete-clang' : {'editor': 'nvim', 'for': 'c'}}
 
 let g:go_plugins = {
+    \ 'zchee/deoplete-go': { 'editor': 'nvim', 'do': 'make'},
     \ 'fatih/vim-go' : {'editor': 'nvim', 'for': 'go'}}
 
 let g:editor_plugins = {
@@ -70,7 +71,6 @@ let g:all_plugins = [
     \ g:python_plugins,
     \ g:typescript_plugins,
     \ g:php_plugins,
-    \ g:scala_plugins,
     \ g:coding_plugins,
     \ g:elm_plugins,
     \ g:editor_plugins,
@@ -293,6 +293,9 @@ let g:syntastic_auto_loc_list = 0
 
 " FZF settings
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " clang TODO: Move to file plugin
 let g:deoplete#sources#clang#libclang_path = '/usr/lib64/libclang.so'
