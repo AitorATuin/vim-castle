@@ -1,6 +1,9 @@
 set nocompatible
 filetype off
 
+" Point python into virtualenv
+let g:python_host_prog="~/.virtualenvs/neovim/bin/python"
+
 let g:theme_plugins = {
     \ 'bling/vim-airline' : {},
     \ 'vim-airline/vim-airline-themes': {}}
@@ -242,12 +245,12 @@ nmap <silent> <A-h> :wincmd h<CR>
 nmap <silent> <A-l> :wincmd l<CR>
 
 " Move between tabs
-nmap <silent> <C-Left> :tabNext<CR>
-nmap <silent> <C-Right> :tabnext<CR>
+nmap <silent> <C-h> :tabprevious<CR>
+nmap <silent> <C-l> :tabnext<CR>
 
 " Move between location list
-nmap <silent> <C-Up> :lNext<CR>
-nmap <silent> <C-Down> :lnext<CR>
+nmap <silent> <C-j> :lNext<CR>
+nmap <silent> <C-k> :lnext<CR>
 
 " NERDTree
 nmap <silent> <Leader>1 :NERDTreeToggle<CR> 
@@ -295,6 +298,11 @@ let g:syntastic_auto_loc_list = 0
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
 
 " Deoplete
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
+inoremap <Leader><Tab> <Space><Space>
+" popup movement
+inoremap <A-j> <C-n>
+inoremap <A-k> <C-p>
 let g:deoplete#enable_at_startup = 1
 
 " clang TODO: Move to file plugin
@@ -303,10 +311,10 @@ let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
 let g:deoplete#sources#clang#std#c = 'c11'
 let g:deoplete#sources#clang#std#cpp = 'c++1z'
 let g:deoplete#sources#clang#sort_algo = 'priority'
+let g:deoplete#sources#clang#debug#log_file = '~/.log/nvim/python/deoplete-clang.log'
 
 " debug
 let g:deoplete#enable_debug = 1
-let g:deoplete#sources#clang#debug#log_file = '~/.log/nvim/python/deoplete-clang.log'
 
 " EasyAlign
 " Start interactive EasyAlign in visual mode (e.g. vipga)
