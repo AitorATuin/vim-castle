@@ -239,14 +239,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "mySnippets"]
 
 
 " Move between windows
-nmap <silent> <M-Up> :wincmd k<CR>
-nmap <silent> <M-Down> :wincmd j<CR>
-nmap <silent> <M-Left> :wincmd h<CR>
-nmap <silent> <M-Right> :wincmd l<CR>
-nmap <silent> <A-k> :wincmd k<CR>
-nmap <silent> <A-j> :wincmd j<CR>
-nmap <silent> <A-h> :wincmd h<CR>
-nmap <silent> <A-l> :wincmd l<CR>
+nmap <silent> <M-k> :wincmd k<CR>
+nmap <silent> <M-j> :wincmd j<CR>
+nmap <silent> <M-h> :wincmd h<CR>
+nmap <silent> <M-l> :wincmd l<CR>
 
 " Move between tabs
 nmap <silent> <C-h> :tabprevious<CR>
@@ -267,10 +263,6 @@ if has ('gui_running')
     highlight Pmenu guibg=#cccccc gui=bold    
     set guioptions-=T  " no toolbar
     " Navigate windows
-    nmap <silent> <A-Up> :wincmd k<CR>
-    nmap <silent> <A-Down> :wincmd j<CR>
-    nmap <silent> <A-Left> :wincmd h<CR>
-    nmap <silent> <A-Right> :wincmd l<CR>
     nmap <silent> <A-k> :wincmd k<CR>
     nmap <silent> <A-j> :wincmd j<CR>
     nmap <silent> <A-h> :wincmd h<CR>
