@@ -249,8 +249,8 @@ nmap <silent> <C-h> :tabprevious<CR>
 nmap <silent> <C-l> :tabnext<CR>
 
 " Move between location list
-nmap <silent> <C-j> :lNext<CR>
-nmap <silent> <C-k> :lnext<CR>
+nmap <silent> <C-k> :lNext<CR>
+nmap <silent> <C-j> :lnext<CR>
 
 " NERDTree
 nmap <silent> <Leader>1 :NERDTreeToggle<CR> 
@@ -289,6 +289,16 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
 let g:syntastic_auto_loc_list = 0
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, open syntastic error location panel
+        Errors
+    endif
+endfunction
+nmap <leader>0 :call ToggleErrors()<CR>
+
 
 " FZF settings
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
