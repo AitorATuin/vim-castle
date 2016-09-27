@@ -57,6 +57,7 @@ let g:editor_plugins = {
     \ 'junegunn/fzf.vim' : {},
     \ 'vimwiki/vimwiki' : {},
     \ 'tpope/vim-fugitive' : {},
+    \ 'airblade/vim-gitgutter' : {},
     \ 'junegunn/vim-easy-align' : {}}
 
 let g:misc_plugins = {
@@ -116,7 +117,7 @@ endif
 call plug#end()
 
 set t_Co=256
-colorscheme vividchalk
+colorscheme Tomorrow-Night-Eighties
 set background=dark
 
 
