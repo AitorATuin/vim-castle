@@ -6,7 +6,8 @@ let g:python_host_prog="~/.virtualenvs/neovim/bin/python"
 
 let g:theme_plugins = {
     \ 'bling/vim-airline' : {},
-    \ 'vim-airline/vim-airline-themes': {}}
+    \ 'vim-airline/vim-airline-themes': {},
+    \ 'flazz/vim-colorschemes': {}}
 
 let g:lua_plugins = {
     \ 'xolox/vim-lua-ftplugin' : {'for': 'lua'},
@@ -30,7 +31,8 @@ let g:php_plugins = {
 
 let g:coding_plugins = {
     \ 'Shougo/deoplete.nvim': {'editor': 'nvim'},
-    \ 'scrooloose/syntastic' : {},
+    \ 'scrooloose/syntastic' : {'editor': 'vim'},
+    \ 'neomake/neomake': {'editor': 'nvim'},
     \ 'SirVer/ultisnips' : {},
     \ 'honza/vim-snippets' : {},
     \ 'kien/rainbow_parentheses.vim' : {},
@@ -278,25 +280,39 @@ set relativenumber
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_debug = 0
-let g:syntastic_enable_signs = 1
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_style_error_symbol = "✗"
-let g:syntastic_style_warning_symbol = "⚠"
-let g:syntastic_auto_loc_list = 0
-function! ToggleErrors()
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$')
-        " Nothing was closed, open syntastic error location panel
-        Errors
-    endif
-endfunction
+if exists('g:loaded_syntastic_plugin')
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 0
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_debug = 0
+    let g:syntastic_enable_signs = 1
+    let g:syntastic_warning_symbol = "⚠"
+    let g:syntastic_error_symbol = "✗"
+    let g:syntastic_style_error_symbol = "✗"
+    let g:syntastic_style_warning_symbol = "⚠"
+    let g:syntastic_auto_loc_list = 0
+    function! ToggleErrors()
+        let old_last_winnr = winnr('$')
+        lclose
+        if old_last_winnr == winnr('$')
+            " Nothing was closed, open syntastic error location panel
+            Errors
+        endif
+    endfunction
+else
+    let g:neomake_open_list = 2
+
+    function! ToggleErrors()
+        let old_last_winnr = winnr('$')
+        lclose
+        if old_last_winnr == winnr('$')
+            " Nothing was closed, open Neomake error location panel
+            lopen
+        endif
+    endfunction
+
+endif
 nmap <leader>0 :call ToggleErrors()<CR>
 
 

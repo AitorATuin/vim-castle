@@ -13,4 +13,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_bin_path = expand("~/.local/share/vim/go/bin")
-let g:syntastic_go_checkers = ['gometalinter']
+let g:go_autodetect_gopath = 0
+if !exists('g:loaded_syntastic_plugin')
+    let g:syntastic_go_checkers = ['gometalinter']
+endif
