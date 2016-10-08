@@ -13,6 +13,11 @@ let g:lua_plugins = {
     \ 'xolox/vim-lua-ftplugin' : {'for': 'lua'},
     \ 'xolox/vim-lua-inspect' : {'for': 'lua'}}
 
+let g:haskell_plugins = {
+    \ 'neovimhaskell/haskell-vim' : {'for': 'haskell'},
+    \ 'eagletmt/neco-ghc' : {'for': 'haskell'},
+    \ 'bitc/vim-hdevtools' : {'for': 'haskell'}}
+
 let g:scala_plugins = {
     \ 'ensime/ensime-vim' : {}}
 
@@ -82,6 +87,7 @@ let g:all_plugins = [
     \ g:editor_plugins,
     \ g:misc_plugins,
     \ g:go_plugins,
+    \ g:haskell_plugins,
     \ g:c_plugins]
 
 function! _load_plugins(editor)
@@ -353,3 +359,4 @@ let g:easy_align_delimiters = {
 
 nmap gb :bn<CR>
 nmap gB :bN<CR>
+
