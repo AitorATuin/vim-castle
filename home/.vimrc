@@ -2,7 +2,8 @@ set nocompatible
 filetype off
 
 " Point python into virtualenv
-let g:python_host_prog="~/.virtualenvs/neovim/bin/python"
+" let g:python_host_prog="~/.virtualenvs/neovim/bin/python"
+" let g:python3_host_prog="~/.virtualenvs/neovim/bin/python"
 
 let g:theme_plugins = {
     \ 'bling/vim-airline' : {},
@@ -19,6 +20,7 @@ let g:haskell_plugins = {
     \ 'bitc/vim-hdevtools' : {'for': 'haskell'}}
 
 let g:scala_plugins = {
+    \ 'derekwyatt/vim-scala' : {},
     \ 'ensime/ensime-vim' : {}}
 
 let g:python_plugins = {
@@ -88,12 +90,13 @@ let g:all_plugins = [
     \ g:misc_plugins,
     \ g:go_plugins,
     \ g:haskell_plugins,
+    \ g:scala_plugins,
     \ g:c_plugins]
 
 function! _load_plugins(editor)
     let plugins = {}
     for p in g:all_plugins
-        let plugins = extend(plugins, p) 
+        let plugins = extend(plugins, p)
     endfor
     for plugin in keys(plugins)
         let props =  plugins[plugin]
@@ -139,9 +142,15 @@ syntax on
 set shiftwidth=4 softtabstop=4 tabstop=4
 set smartindent
 set expandtab
+" Inserts a real tab
+inoremap <S-Tab> <C-V><Tab>
 
 " Use <leader>l to toggle display of whitespace
+"
+set listchars=tab:▶\ ,eol:¶,trail:●
 nmap <leader>l :set list!<CR>
+hi SpecialKey ctermfg=160 guifg=160
+
 
 " automatically change window's cwd to file's dir
 set autochdir
@@ -262,14 +271,14 @@ nmap <silent> <C-k> :lNext<CR>
 nmap <silent> <C-j> :lnext<CR>
 
 " NERDTree
-nmap <silent> <Leader>1 :NERDTreeToggle<CR> 
+nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
 " TagBar
 nmap <silent> <Leader>2 :TagbarToggle<CR>
 
-" more subtle popup colors 
+" more subtle popup colors
 if has ('gui_running')
-    highlight Pmenu guibg=#cccccc gui=bold    
+    highlight Pmenu guibg=#cccccc gui=bold
     set guioptions-=T  " no toolbar
     " Navigate windows
     nmap <silent> <A-k> :wincmd k<CR>
