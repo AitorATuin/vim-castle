@@ -2,8 +2,8 @@ set nocompatible
 filetype off
 
 " Point python into virtualenv
-" let g:python_host_prog="~/.virtualenvs/neovim/bin/python"
-" let g:python3_host_prog="~/.virtualenvs/neovim/bin/python"
+let g:python_host_prog="/home/eof/.virtualenvs/neovim2/bin/python2"
+let g:python3_host_prog="/home/eof/.virtualenvs/neovim3/bin/python3"
 
 let g:theme_plugins = {
     \ 'bling/vim-airline' : {},
@@ -21,12 +21,13 @@ let g:haskell_plugins = {
 
 let g:scala_plugins = {
     \ 'derekwyatt/vim-scala' : {},
+    \ '~/.vim/bundle/vim-sbt' : {},
     \ 'ensime/ensime-vim' : {}}
 
 let g:python_plugins = {
     \ 'xolox/vim-pyref' : {'for': 'python'},
     \ 'AitorATuin/ropevim' : {'for': 'python'},
-    \ 'davidhalter/jedi-vim' : {'for': 'python', 'editor': 'vim'},
+    \ 'davidhalter/jedi-vim' : {'for': 'python'},
     \ 'zchee/deoplete-jedi': {'for': 'python', 'editor': 'nvim'}}
 
 let g:typescript_plugins = {
@@ -323,8 +324,9 @@ else
         let old_last_winnr = winnr('$')
         lclose
         if old_last_winnr == winnr('$')
-            " Nothing was closed, open Neomake error location panel
-            lopen
+            " Nothing was closed, call Neomake and open Neomake error location panel
+            " if there were some error/warning
+            Neomake
         endif
     endfunction
 
@@ -369,3 +371,4 @@ let g:easy_align_delimiters = {
 nmap gb :bn<CR>
 nmap gB :bN<CR>
 
+set tags=.tags;/
