@@ -64,6 +64,9 @@ let g:elm_plugins = {
 let g:c_plugins = {
     \ 'zchee/deoplete-clang' : {'editor': 'nvim', 'for': 'c'}}
 
+let g:arduino_plugins = {
+    \ 'jplaut/vim-arduino-ino' : {'editor': 'nvim', 'for': 'ino'}}
+
 " go plugins {{{3
 let g:go_plugins = {
     \ 'zchee/deoplete-go': { 'editor': 'nvim', 'do': 'make'},
@@ -106,7 +109,8 @@ let g:all_plugins = [
     \ g:go_plugins,
     \ g:haskell_plugins,
     \ g:scala_plugins,
-    \ g:c_plugins]
+    \ g:c_plugins,
+    \ g:arduino_plugins]
 
 " Function to load plugins {{{2
 function! _load_plugins(editor)
