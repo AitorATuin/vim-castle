@@ -65,7 +65,7 @@ let g:c_plugins = {
     \ 'zchee/deoplete-clang' : {'editor': 'nvim', 'for': 'c'}}
 
 let g:arduino_plugins = {
-    \ 'jplaut/vim-arduino-ino' : {'editor': 'nvim', 'for': 'ino'}}
+    \ 'jplaut/vim-arduino-ino' : {'editor': 'nvim', 'for': 'arduino'}}
 
 " go plugins {{{3
 let g:go_plugins = {
@@ -80,7 +80,8 @@ let g:editor_plugins = {
     \ 'vimwiki/vimwiki' : {},
     \ 'tpope/vim-fugitive' : {},
     \ 'airblade/vim-gitgutter' : {},
-    \ 'junegunn/vim-easy-align' : {}}
+    \ 'junegunn/vim-easy-align' : {},
+    \ 'kassio/neoterm' : {'editor': 'nvim'}}
 
 " Misc plugins {{{3
 let g:misc_plugins = {
@@ -180,6 +181,12 @@ syntax on
 augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+" Autocmd group for Terminal {{{3
+augroup Terminal
+    au!
+    au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
 augroup END
 
 " Copy and paste {{{3
@@ -413,7 +420,16 @@ let g:easy_align_delimiters = {
 \ 'l': { 'pattern': '--', 'ignore_groups': [] }}
 
 " Custom functions {{{1
+"
+" Send to terminal
+function! REPLSend(lines)
+    call jobsend(g:last_terminal_job_id, add(a:lines, ''))
+endfunction
+
+command! REPLSendCurrentLine call REPLSend([getline('.')])
+
 " Project related functions {{{2
+"
 " Returns the root for a scala project
 function! Find_scala_root(path, was_candidate)
     " Reduce one level the path
@@ -439,3 +455,4 @@ function! Find_scala_root(path, was_candidate)
     let l:has_test = (index(l:current_files, l:current_path . "/test/") < 0) ? 0 : 1
     return Find_scala_root(l:current_path, l:has_main || l:has_test)
 endfunction
+
