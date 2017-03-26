@@ -168,6 +168,10 @@ set t_Co=256
 colorscheme Tomorrow-Night-Eighties
 set background=dark
 
+" highlighting column and row for current position
+set cursorcolumn
+set cursorline
+
 let mapleader=","
 
 filetype plugin indent on
