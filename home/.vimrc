@@ -81,7 +81,7 @@ let g:editor_plugins = {
     \ 'tpope/vim-fugitive' : {},
     \ 'airblade/vim-gitgutter' : {},
     \ 'junegunn/vim-easy-align' : {},
-    \ 'kassio/neoterm' : {'editor': 'nvim'}}
+    \ 'kassio/neoterm' : {'editor': 'nvim', 'frozen': 1}}
 
 " Misc plugins {{{3
 let g:misc_plugins = {
