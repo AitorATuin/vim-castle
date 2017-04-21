@@ -59,10 +59,10 @@ snippet @classmod "Class Mmodule definition" b
 -- author: `!v get(g:, 'lua_author', $USER)`
 -- license:`!v get(g:, 'lua_license', 'MIT')`
 
-local $1 = {}
-
 -- class table
 local `!p snip.rv=t[1].title()` = {}
+
+`!p snip.rv=t[1].title()`.__index = `!p snip.rv=t[1].title()`
 endsnippet
 
 # This snippet allows one to define function with types
