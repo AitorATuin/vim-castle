@@ -3,12 +3,14 @@
 set nocompatible
 filetype off
 "}}}
+set termguicolors
 " Plugins {{{1
 " Define list of plugins {{{2
 " theme plugins {{{3
 let g:theme_plugins = {
     \ 'bling/vim-airline' : {},
     \ 'vim-airline/vim-airline-themes': {},
+    \ 'morhetz/gruvbox': {'editor': 'nvim'},
     \ 'flazz/vim-colorschemes': {}}
 
 " lua plugins {{{3
@@ -225,6 +227,15 @@ nmap <silent> <C-j> :lnext<CR>
 inoremap <A-j> <C-n>
 inoremap <A-k> <C-p>
 
+" move in command line
+cnoremap <Esc>0 <Home>
+cnoremap <Esc>$ <End>
+cnoremap <Esc>l <Right>
+cnoremap <Esc>h <Left>
+cnoremap <Esc>cb <C-W>
+cnoremap <Esc>e <S-Right>
+cnoremap <Esc>b <S-Left>
+
 " Default tab configuration {{{3
 set shiftwidth=4 softtabstop=4 tabstop=4
 set smartindent
@@ -242,7 +253,7 @@ endfunction
 
 " Misc general options {{{3
 " more subtle popup colors
-if has ('gui_running')
+if has('gui_running')
     highlight Pmenu guibg=#cccccc gui=bold
     set guioptions-=T  " no toolbar
     " Navigate windows
@@ -318,7 +329,7 @@ nnoremap    <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " Powerline setup {{{2
 if !exists('g:airline_symbols')
-let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts = 1
 let g:airline_symbols.maxlinenr = 'Ξ'
@@ -352,8 +363,6 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "mySnippets"]
 " NERDTree {{{2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
-" TagBar {{{2
-nmap <silent> <Leader>2 :TagbarToggle<CR>
 
 " Syntastic settings {{{2
 "set statusline+=%#warningmsg#
@@ -459,4 +468,6 @@ function! Find_scala_root(path, was_candidate)
     let l:has_test = (index(l:current_files, l:current_path . "/test/") < 0) ? 0 : 1
     return Find_scala_root(l:current_path, l:has_main || l:has_test)
 endfunction
+
+colorscheme gruvbox
 
