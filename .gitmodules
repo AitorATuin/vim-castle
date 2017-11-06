@@ -1,5 +1,5 @@
 [submodule "home/.vim/fonts"]
-	path = home/.vim/fonts
+	path = fonts
 	url = https://github.com/powerline/fonts.git
 [submodule "vim-plug"]
 	path = home/.vim/vim-plug
