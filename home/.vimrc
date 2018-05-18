@@ -9,9 +9,7 @@ set termguicolors
 " theme plugins {{{3
 let g:theme_plugins = {
     \ 'bling/vim-airline' : {},
-    \ 'vim-airline/vim-airline-themes': {},
-    \ 'morhetz/gruvbox': {'editor': 'nvim'},
-    \ 'flazz/vim-colorschemes': {}}
+    \ 'vim-airline/vim-airline-themes': {}}
 
 " lua plugins {{{3
 let g:lua_plugins = {
@@ -25,10 +23,7 @@ let g:haskell_plugins = {
     \ 'bitc/vim-hdevtools' : {'for': 'haskell'}}
 
 " scala plugins {{{3
-let g:scala_plugins = {
-    \ 'derekwyatt/vim-scala' : {},
-    \ '~/.vim/bundle/vim-sbt' : {},
-    \ 'ensime/ensime-vim' : {}}
+let g:scala_plugins = {}
 
 " python plugins {{{3
 let g:python_plugins = {
@@ -167,7 +162,7 @@ if has("unix")
 endif
 
 set t_Co=256
-colorscheme Tomorrow-Night-Eighties
+colorscheme atuin
 set background=dark
 
 " highlighting column and row for current position
@@ -252,9 +247,7 @@ endfunction
 "imap <silent><expr><tab> Super_tab_complete()
 
 " Misc general options {{{3
-" more subtle popup colors
 if has('gui_running')
-    highlight Pmenu guibg=#cccccc gui=bold
     set guioptions-=T  " no toolbar
     " Navigate windows
     nmap <silent> <A-k> :wincmd k<CR>
@@ -468,6 +461,4 @@ function! Find_scala_root(path, was_candidate)
     let l:has_test = (index(l:current_files, l:current_path . "/test/") < 0) ? 0 : 1
     return Find_scala_root(l:current_path, l:has_main || l:has_test)
 endfunction
-
-colorscheme gruvbox
 
