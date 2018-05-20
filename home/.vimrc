@@ -165,8 +165,7 @@ set t_Co=256
 colorscheme atuin
 set background=dark
 
-" highlighting column and row for current position
-set cursorcolumn
+" highlighting row for current position
 set cursorline
 
 let mapleader=","
