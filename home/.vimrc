@@ -12,9 +12,7 @@ let g:theme_plugins = {
     \ 'vim-airline/vim-airline-themes': {}}
 
 " lua plugins {{{3
-let g:lua_plugins = {
-    \ 'xolox/vim-lua-ftplugin' : {'for': 'lua'},
-    \ 'xolox/vim-lua-inspect' : {'for': 'lua'}}
+let g:lua_plugins = {}
 
 " haskell plugins {{{3
 let g:haskell_plugins = {
@@ -26,11 +24,7 @@ let g:haskell_plugins = {
 let g:scala_plugins = {}
 
 " python plugins {{{3
-let g:python_plugins = {
-    \ 'xolox/vim-pyref' : {'for': 'python'},
-    \ 'AitorATuin/ropevim' : {'for': 'python'},
-    \ 'davidhalter/jedi-vim' : {'for': 'python'},
-    \ 'zchee/deoplete-jedi': {'for': 'python', 'editor': 'nvim'}}
+let g:python_plugins = {}
 " typescript plugins {{{3
 let g:typescript_plugins = {
     \ 'Quramy/tsuquyomi' : {'for': 'typescript'},
@@ -43,6 +37,7 @@ let g:php_plugins = {
 " general coding plugins {{{3
 
 let g:coding_plugins = {
+    \ 'autozimu/LanguageClient-neovim': {'editor': 'nvim', 'branch': 'next',},
     \ 'Shougo/deoplete.nvim': {'editor': 'nvim'},
     \ 'scrooloose/syntastic' : {'editor': 'vim'},
     \ 'neomake/neomake': {'editor': 'nvim'},
@@ -65,9 +60,9 @@ let g:arduino_plugins = {
     \ 'jplaut/vim-arduino-ino' : {'editor': 'nvim', 'for': 'arduino'}}
 
 " go plugins {{{3
-let g:go_plugins = {
-    \ 'zchee/deoplete-go': { 'editor': 'nvim', 'do': 'make'},
-    \ 'fatih/vim-go' : {'editor': 'nvim', 'for': 'go'}}
+let g:go_plugins = {}
+    " \ 'zchee/deoplete-go': { 'editor': 'nvim', 'do': 'make'},
+    " \ 'fatih/vim-go' : {'editor': 'nvim', 'for': 'go'}}
 
 " General editor plugins {{{3
 let g:editor_plugins = {
