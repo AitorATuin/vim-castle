@@ -25,6 +25,7 @@ let s:palette.color12 = '#6a9fb5'
 let s:palette.color13 = '#aa759f'
 let s:palette.color14 = '#75b5aa'
 let s:palette.color15 = '#f5f5f5'
+let s:palette.warning = '#FFFF66'
 
 let s:BG = s:palette.color0
 let s:FG = s:palette.color15
@@ -80,11 +81,11 @@ function! s:HL(group, fg, bg, ...)
   endif
 
   let histring = [ 'hi', a:group,
-        \ 'guifg=' . toupper(fg),
-        \ 'guibg=' . toupper(bg),
-        \ 'gui='   . emstr,
+        \ 'guifg='   . toupper(fg),
+        \ 'guibg='   . toupper(bg),
+        \ 'gui='     . emstr,
         \ 'cterm='   . emstr,
-        \ 'term='   . emstr
+        \ 'term='    . emstr
         \ ]
   execute join(histring, ' ')
 endfunction
@@ -122,3 +123,10 @@ call s:HL('Folded', s:palette.color0, '#867587', 'italic')
 " Column where folds are displayed
 " call s:HL('FoldColumn', s:palette.color0, s:palette.color0)
 
+" LanguageServerHL
+call s:HL('ALEErrorSign', s:palette.color1, s:BG, 'bold')
+call s:HL('ALEError', s:palette.color1, s:BG, 'underline')
+call s:HL('ALEWarningSign', s:palette.warning, s:BG, 'bold')
+call s:HL('ALEWarning', s:palette.warning, s:BG, 'underline')
+call s:HL('ALEInfoSign', s:palette.color4, s:BG, 'bold')
+call s:HL('ALEInfo', s:FG, s:BG, 'underline')
