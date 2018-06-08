@@ -2,8 +2,10 @@
 " Prelude {{{1
 set nocompatible
 filetype off
-"}}}
 set termguicolors
+let g:deoplete#enable_at_startup = 1
+"}}}
+
 " Plugins {{{1
 " Define list of plugins {{{2
 " theme plugins {{{3
@@ -62,6 +64,7 @@ let g:arduino_plugins = {
 let g:go_plugins = {}
     " \ 'zchee/deoplete-go': { 'editor': 'nvim', 'do': 'make'},
     " \ 'fatih/vim-go' : {'editor': 'nvim', 'for': 'go'}}
+
 
 " General editor plugins {{{3
 let g:editor_plugins = {
