@@ -343,7 +343,6 @@ command! LocalVim call dirsettings#Install()
 " NERDTree {{{2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
-
 " Syntastic settings {{{2
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -385,22 +384,6 @@ nmap <leader>0 :call ToggleErrors()<CR>
 " FZF settings {{{2
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
 
-" Deoplete {{{2
-if has('nvim')
-    " inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<tab>"
-    let g:deoplete#enable_at_startup = 1
-
-    " clang TODO: Move to file plugin
-    let g:deoplete#sources#clang#libclang_path = '/usr/lib64/libclang.so'
-    let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
-    let g:deoplete#sources#clang#std#c = 'c11'
-    let g:deoplete#sources#clang#std#cpp = 'c++1z'
-    let g:deoplete#sources#clang#sort_algo = 'priority'
-    let g:deoplete#sources#clang#debug#log_file = '~/.log/nvim/python/deoplete-clang.log'
-    "
-    " debug
-    let g:deoplete#enable_debug = 1
-endif
 
 " EasyAlign {{{2
 " Start interactive EasyAlign in visual mode (e.g. vipga)
