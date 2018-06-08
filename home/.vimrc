@@ -327,18 +327,6 @@ set laststatus=2
 " NERDTree {{{2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
-let g:neomake_open_list = 2
-function! ToggleErrors()
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$')
-        " Nothing was closed, call Neomake and open Neomake error location panel
-        " if there were some error/warning
-        Neomake
-    endif
-endfunction
-nmap <leader>0 :call ToggleErrors()<CR>
-
 " Custom functions {{{1
 "
 " Send to terminal
