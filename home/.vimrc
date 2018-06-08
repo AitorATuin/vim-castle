@@ -84,7 +84,6 @@ let g:misc_plugins = {
     \ 'xolox/vim-misc' : {},
     \ 'mbbill/undotree' : {},
     \ 'tpope/vim-unimpaired' : {},
-    \ 'mantiz/vim-plugin-dirsettings' : {},
     \ 'Shougo/vimproc.vim' : {'editor': 'vim'}}
 
 " Custom (unmanaged plugins) {{{3
@@ -337,8 +336,6 @@ nmap t <Plug>(easymotion-t2)
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
-" LocalVim {{{2
-command! LocalVim call dirsettings#Install()
 
 " NERDTree {{{2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
