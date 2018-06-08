@@ -39,7 +39,6 @@ let g:php_plugins = {
 let g:coding_plugins = {
     \ 'autozimu/LanguageClient-neovim': {'editor': 'nvim', 'branch': 'next',},
     \ 'Shougo/deoplete.nvim': {'editor': 'nvim'},
-    \ 'scrooloose/syntastic' : {'editor': 'vim'},
     \ 'neomake/neomake': {'editor': 'nvim'},
     \ 'Shougo/neosnippet.vim' : {},
     \ 'Shougo/neosnippet-snippets' : {},
@@ -54,8 +53,7 @@ let g:elm_plugins = {
     \ 'lambdatoast/elm.vim' : {'for': 'elm'}}
 
 " c plugins {{{3
-let g:c_plugins = {
-    \ 'zchee/deoplete-clang' : {'editor': 'nvim', 'for': 'c'}}
+let g:c_plugins = {}
 
 let g:arduino_plugins = {
     \ 'jplaut/vim-arduino-ino' : {'editor': 'nvim', 'for': 'arduino'}}
@@ -83,8 +81,7 @@ let g:misc_plugins = {
     \ 'scrooloose/nerdtree' : {'on': 'NERDTreeToggle'},
     \ 'xolox/vim-misc' : {},
     \ 'mbbill/undotree' : {},
-    \ 'tpope/vim-unimpaired' : {},
-    \ 'Shougo/vimproc.vim' : {'editor': 'vim'}}
+    \ 'tpope/vim-unimpaired' : {}}
 
 " Custom (unmanaged plugins) {{{3
 let g:unmanaged_plugins = {
@@ -330,42 +327,16 @@ set laststatus=2
 " NERDTree {{{2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
-" Syntastic settings {{{2
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-if exists('g:loaded_syntastic_plugin')
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_debug = 0
-    let g:syntastic_enable_signs = 1
-    let g:syntastic_warning_symbol = "⚠"
-    let g:syntastic_error_symbol = "✗"
-    let g:syntastic_style_error_symbol = "✗"
-    let g:syntastic_style_warning_symbol = "⚠"
-    let g:syntastic_auto_loc_list = 0
-    function! ToggleErrors()
-        let old_last_winnr = winnr('$')
-        lclose
-        if old_last_winnr == winnr('$')
-            " Nothing was closed, open syntastic error location panel
-            Errors
-        endif
-    endfunction
-else
-    let g:neomake_open_list = 2
-    function! ToggleErrors()
-        let old_last_winnr = winnr('$')
-        lclose
-        if old_last_winnr == winnr('$')
-            " Nothing was closed, call Neomake and open Neomake error location panel
-            " if there were some error/warning
-            Neomake
-        endif
-    endfunction
-endif
+let g:neomake_open_list = 2
+function! ToggleErrors()
+    let old_last_winnr = winnr('$')
+    lclose
+    if old_last_winnr == winnr('$')
+        " Nothing was closed, call Neomake and open Neomake error location panel
+        " if there were some error/warning
+        Neomake
+    endif
+endfunction
 nmap <leader>0 :call ToggleErrors()<CR>
 
 " Custom functions {{{1
