@@ -382,17 +382,6 @@ nmap <leader>0 :call ToggleErrors()<CR>
 let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
 
 
-" EasyAlign {{{2
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-" Custom alignment rules
-" l inline lua comments
-let g:easy_align_delimiters = {
-\ 'l': { 'pattern': '--', 'ignore_groups': [] }}
-
-"
 " Custom functions {{{1
 "
 " Send to terminal
