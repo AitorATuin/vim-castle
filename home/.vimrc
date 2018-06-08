@@ -41,7 +41,8 @@ let g:coding_plugins = {
     \ 'Shougo/deoplete.nvim': {'editor': 'nvim'},
     \ 'scrooloose/syntastic' : {'editor': 'vim'},
     \ 'neomake/neomake': {'editor': 'nvim'},
-    \ 'SirVer/ultisnips' : {},
+    \ 'Shougo/neosnippet.vim' : {},
+    \ 'Shougo/neosnippet-snippets' : {},
     \ 'honza/vim-snippets' : {},
     \ 'kien/rainbow_parentheses.vim' : {},
     \ 'tpope/vim-surround' : {},
@@ -73,7 +74,9 @@ let g:editor_plugins = {
     \ 'tpope/vim-fugitive' : {},
     \ 'airblade/vim-gitgutter' : {},
     \ 'junegunn/vim-easy-align' : {},
-    \ 'kassio/neoterm' : {'editor': 'nvim', 'frozen': 1}}
+    \ 'kassio/neoterm' : {'editor': 'nvim', 'frozen': 1},
+    \ 'junegunn/limelight.vim': {},
+    \ 'junegunn/goyo.vim': {}}
 
 " Misc plugins {{{3
 let g:misc_plugins = {
@@ -337,16 +340,6 @@ hi link EasyMotionShade  Comment
 " LocalVim {{{2
 command! LocalVim call dirsettings#Install()
 
-" UtilSnip {{{2
-let g:UltiSnipsExpandTrigger="<m-tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<m-tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
-" TODO: create a small window to show snippets in current scope
-" UltiSnips#SnippetsInCurrentScope
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "mySnippets"]
-
 " NERDTree {{{2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
@@ -394,7 +387,7 @@ let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
 
 " Deoplete {{{2
 if has('nvim')
-    inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<tab>"
+    " inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<tab>"
     let g:deoplete#enable_at_startup = 1
 
     " clang TODO: Move to file plugin
@@ -419,6 +412,7 @@ nmap ga <Plug>(EasyAlign)
 let g:easy_align_delimiters = {
 \ 'l': { 'pattern': '--', 'ignore_groups': [] }}
 
+"
 " Custom functions {{{1
 "
 " Send to terminal
@@ -455,4 +449,9 @@ function! Find_scala_root(path, was_candidate)
     let l:has_test = (index(l:current_files, l:current_path . "/test/") < 0) ? 0 : 1
     return Find_scala_root(l:current_path, l:has_main || l:has_test)
 endfunction
+
+augroup my_limelight
+    autocmd WinEnter * Limelight0.6
+    autocmd WinLeave * Limelight!
+augroup END
 
