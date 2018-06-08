@@ -378,10 +378,6 @@ else
 endif
 nmap <leader>0 :call ToggleErrors()<CR>
 
-" FZF settings {{{2
-let g:fzf_launcher = 'urxvt -geometry 120x30 -e sh -c %s'
-
-
 " Custom functions {{{1
 "
 " Send to terminal
