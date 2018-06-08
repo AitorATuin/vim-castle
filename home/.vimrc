@@ -327,16 +327,6 @@ let g:airline#extensions#tabline#fnamemode = ":t"
 set hidden
 set laststatus=2
 
-" EasyMotion {{{2
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-" two characters search
-nmap s <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t2)
-hi link EasyMotionTarget ErrorMsg
-hi link EasyMotionShade  Comment
-
-
 " NERDTree {{{2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
