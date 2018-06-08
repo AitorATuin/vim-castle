@@ -1,3 +1,4 @@
+let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 " Plugin key-mappings.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <M-Tab>     <Plug>(neosnippet_expand_or_jump)
