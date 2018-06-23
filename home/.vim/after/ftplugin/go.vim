@@ -1,7 +1,6 @@
 highlight Excess ctermbg=DarkGrey guibg=Black
 match Excess /\%120v.*/
 set wrap
-UltiSnipsAddFiletypes go 
 let g:deoplete#sources#go#align_class = 1
 let g:deoplete#sources#go#align_class = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'

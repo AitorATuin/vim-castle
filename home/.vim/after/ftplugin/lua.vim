@@ -1,5 +1,3 @@
-UltiSnipsAddFiletypes lua
-
 " Let xolox/vim-lua-ftplugin work with deoplete
 let g:lua_check_syntax = 0
 let g:lua_complete_omni = 1
