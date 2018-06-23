@@ -184,6 +184,7 @@ augroup END
 augroup Terminal
     au!
     au TermOpen * let g:last_terminal_job_id = b:terminal_job_id
+    au TermOpen * tnoremap <Esc> <C-\><C-n>
 augroup END
 
 " Copy and paste {{{3
@@ -331,41 +332,12 @@ set laststatus=2
 nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
 " Custom functions {{{1
-"
 " Send to terminal
 function! REPLSend(lines)
     call jobsend(g:last_terminal_job_id, add(a:lines, ''))
 endfunction
 
 command! REPLSendCurrentLine call REPLSend([getline('.')])
-
-" Project related functions {{{2
-"
-" Returns the root for a scala project
-function! Find_scala_root(path, was_candidate)
-    " Reduce one level the path
-    let l:current_path = fnamemodify(a:path, ":h")
-    " Base case! Stop recursion
-    " We reach $HOME, / (. or empty string also finishes the recursion)
-    " In that case we return an empty string
-    if l:current_path == $HOME || l:current_path == "" || l:current_path == "/" || l:current_path == "."
-        return "" 
-    else
-        let l:current_files = globpath(l:current_path, "*/", 0, 1)
-        if a:was_candidate
-            " Pevious directory contains main || test
-            let l:has_src = index(l:current_files, l:current_path . "src/")
-            if l:has_src
-                " We found the parent of the src directory, this is the root for
-                " the scala project!
-                return l:current_path
-            endif
-        endif
-    endif
-    let l:has_main = (index(l:current_files, l:current_path . "/main/") < 0) ? 0 : 1
-    let l:has_test = (index(l:current_files, l:current_path . "/test/") < 0) ? 0 : 1
-    return Find_scala_root(l:current_path, l:has_main || l:has_test)
-endfunction
 
 augroup my_limelight
     autocmd WinEnter * Limelight0.6
