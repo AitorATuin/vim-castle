@@ -10,6 +10,7 @@ let g:deoplete#enable_at_startup = 1
 " Define list of plugins {{{2
 " theme plugins {{{3
 let g:theme_plugins = {
+    \ 'ajmwagar/vim-deus':{},
     \ 'bling/vim-airline' : {},
     \ 'vim-airline/vim-airline-themes': {}}
 
@@ -39,7 +40,8 @@ let g:php_plugins = {
 " general coding plugins {{{3
 
 let g:coding_plugins = {
-    \ 'autozimu/LanguageClient-neovim': {'editor': 'nvim', 'branch': 'next',},
+    \ 'AitorATuin/proyecta': {},   
+    \ 'autozimu/LanguageClient-neovim': {'editor': 'nvim', 'branch': 'next'},
     \ 'Shougo/deoplete.nvim': {'editor': 'nvim'},
     \ 'neomake/neomake': {'editor': 'nvim'},
     \ 'Shougo/neosnippet.vim' : {},
@@ -77,7 +79,8 @@ let g:editor_plugins = {
     \ 'junegunn/vim-easy-align' : {},
     \ 'kassio/neoterm' : {'editor': 'nvim', 'frozen': 1},
     \ 'junegunn/limelight.vim': {},
-    \ 'junegunn/goyo.vim': {}}
+    \ 'junegunn/goyo.vim': {},
+    \ 'elixir-editors/vim-elixir': {'for': 'elixir'}}
 
 " Misc plugins {{{3
 let g:misc_plugins = {
@@ -177,7 +180,7 @@ syntax on
 " Reload .vimrc {{{3
 augroup myvimrc
     au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost init.vim so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
 " Autocmd group for Terminal {{{3
