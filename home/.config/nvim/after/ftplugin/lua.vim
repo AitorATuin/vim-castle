@@ -26,4 +26,4 @@ function! LuaLSPDebugModeOff() abort
     \ })
 endfunction
 
-let g:LanguageClient_trace = "info"
+let g:LanguageClient_trace = "messages"
